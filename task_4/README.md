@@ -26,3 +26,9 @@
  + Если всё успешно, то летсгоу то [192.168.11.113](http://192.168.11.113/)
  + если каждый раз после обновления сервера меняются, всё окк)
  
+> Заходим и видим:
+![wed1](https://github.com/MrRunix/Ansible/blob/main/task_4/screenshots/Screenshot%202022-04-06%20at%2017-25-07%20Welcome%20to%20CentOS.png)
+
+> После обновления:
+![web2](https://github.com/MrRunix/Ansible/blob/main/task_4/screenshots/Screenshot%202022-04-06%20at%2017-35-00%20Welcome%20to%20CentOS.png)
++ Если всё работает, давай до свидания ;)
