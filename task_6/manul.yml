@@ -1,0 +1,10 @@
+- name : Play to setup
+  hosts: hp2
+  roles:
+    - pgs/pg2
+
+- name: Play to setup
+  hosts: hp1
+  roles:
+    - pgs/pg1
+    

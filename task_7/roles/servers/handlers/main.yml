@@ -1,0 +1,10 @@
+---
+- name: restart postgres
+  systemd: 
+    name: postgresql-14 
+    state: restarted
+# - name: restart keepalived
+#   systemd:
+#     name: keepalived
+#     state: restarted
+#     enabled: yes

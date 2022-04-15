@@ -1,0 +1,5 @@
+[hp1]
+pg1 ansible_host=192.168.11.111 p=101 master=192.168.11.112 replic=192.168.11.111
+
+[hp2]
+pg2 ansible_host=192.168.11.112 p=100 master=192.168.11.111 replic=192.168.11.112

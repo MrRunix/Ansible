@@ -1,0 +1,9 @@
+---
+# handlers file for balance
+- name: restart postgres
+  systemd: 
+    name: postgresql-14 
+    state: restarted
+
+- name: reboot system
+  reboot:

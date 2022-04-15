@@ -1,0 +1,49 @@
+---
+
+- name: Install the haproxy rpm from a remote repo
+  yum:
+    #name: https://github.com/DBezemer/rpm-haproxy/releases/download/2.4.0/haproxy-2.4.0-1.el7.x86_64.rpm
+    name:
+    - haproxy
+    - keepalived
+    state: latest
+    
+#- name: Start haproxy
+#  ansible.builtin.systemd:
+#    state: restarted
+#    name: haproxy
+#    enabled: yes
+    
+- name: allow binding non-local IPv4
+  sysctl:
+    name: net.ipv4.ip_nonlocal_bind
+    value: "{{ keepalived_ip_nonlocal_bind | string }}"
+    reload: true
+    state: present
+  when: keepalived_ip_nonlocal_bind
+  tags:
+    - sysctl
+    
+- name: config Haproxy
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+  notify: 
+    - restart haproxy
+  tags: haproxy-cfg
+
+- name: config keepalive
+  template:
+    src: keepalived.conf
+    dest: /etc/keepalived/keepalived.conf
+  notify: 
+    - restart keepalived
+  tags: keep
+  with_items: "{{ groups['haproxy'] }}"
+
+- service:
+        name: "haproxy"
+        state: restarted
+- service:
+        name: "keepalived"
+        state: restarted

@@ -1,0 +1,8 @@
+---
+- name: postgresql-14
+  hosts: 
+    - servers
+  roles:
+    - roles/servers
+  tags: pb-host-server
+ 
